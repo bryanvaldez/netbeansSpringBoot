@@ -1,5 +1,5 @@
 package com.rest.persistence.model;
-// Generated 25/03/2018 05:56:17 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2018 04:43:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -34,12 +34,12 @@ public class Enrollmentcourseclass  implements java.io.Serializable {
      private String userCreated;
      private Date dateCreated;
      private Byte status;
-     private Set courseclassattendances = new HashSet(0);
+     private Set<Courseclassattendance> courseclassattendances = new HashSet<Courseclassattendance>(0);
 
     public Enrollmentcourseclass() {
     }
 
-    public Enrollmentcourseclass(Enrollmentdetail enrollmentdetail, Long idCourseClass, String userCreated, Date dateCreated, Byte status, Set courseclassattendances) {
+    public Enrollmentcourseclass(Enrollmentdetail enrollmentdetail, Long idCourseClass, String userCreated, Date dateCreated, Byte status, Set<Courseclassattendance> courseclassattendances) {
        this.enrollmentdetail = enrollmentdetail;
        this.idCourseClass = idCourseClass;
        this.userCreated = userCreated;
@@ -111,11 +111,11 @@ public class Enrollmentcourseclass  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enrollmentcourseclass")
-    public Set getCourseclassattendances() {
+    public Set<Courseclassattendance> getCourseclassattendances() {
         return this.courseclassattendances;
     }
     
-    public void setCourseclassattendances(Set courseclassattendances) {
+    public void setCourseclassattendances(Set<Courseclassattendance> courseclassattendances) {
         this.courseclassattendances = courseclassattendances;
     }
 

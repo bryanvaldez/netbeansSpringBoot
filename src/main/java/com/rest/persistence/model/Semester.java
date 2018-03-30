@@ -1,5 +1,5 @@
 package com.rest.persistence.model;
-// Generated 25/03/2018 05:56:17 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2018 04:43:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -32,12 +32,12 @@ public class Semester  implements java.io.Serializable {
      private String userCreated;
      private Date dateCreated;
      private Byte status;
-     private Set enrollments = new HashSet(0);
+     private Set<Enrollment> enrollments = new HashSet<Enrollment>(0);
 
     public Semester() {
     }
 
-    public Semester(String semesterName, String description, String userCreated, Date dateCreated, Byte status, Set enrollments) {
+    public Semester(String semesterName, String description, String userCreated, Date dateCreated, Byte status, Set<Enrollment> enrollments) {
        this.semesterName = semesterName;
        this.description = description;
        this.userCreated = userCreated;
@@ -109,11 +109,11 @@ public class Semester  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="semester")
-    public Set getEnrollments() {
+    public Set<Enrollment> getEnrollments() {
         return this.enrollments;
     }
     
-    public void setEnrollments(Set enrollments) {
+    public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 

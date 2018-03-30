@@ -1,5 +1,5 @@
 package com.rest.persistence.model;
-// Generated 25/03/2018 05:56:17 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2018 04:43:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -35,13 +35,13 @@ public class Student  implements java.io.Serializable {
      private String userCreated;
      private Date dateCreated;
      private Byte status;
-     private Set enrollments = new HashSet(0);
-     private Set studentaddresses = new HashSet(0);
+     private Set<Enrollment> enrollments = new HashSet<Enrollment>(0);
+     private Set<Studentaddress> studentaddresses = new HashSet<Studentaddress>(0);
 
     public Student() {
     }
 
-    public Student(String firstName, String lastName, Date birthDate, Byte gender, String emailAddress, String userCreated, Date dateCreated, Byte status, Set enrollments, Set studentaddresses) {
+    public Student(String firstName, String lastName, Date birthDate, Byte gender, String emailAddress, String userCreated, Date dateCreated, Byte status, Set<Enrollment> enrollments, Set<Studentaddress> studentaddresses) {
        this.firstName = firstName;
        this.lastName = lastName;
        this.birthDate = birthDate;
@@ -147,20 +147,20 @@ public class Student  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="student")
-    public Set getEnrollments() {
+    public Set<Enrollment> getEnrollments() {
         return this.enrollments;
     }
     
-    public void setEnrollments(Set enrollments) {
+    public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="student")
-    public Set getStudentaddresses() {
+    public Set<Studentaddress> getStudentaddresses() {
         return this.studentaddresses;
     }
     
-    public void setStudentaddresses(Set studentaddresses) {
+    public void setStudentaddresses(Set<Studentaddress> studentaddresses) {
         this.studentaddresses = studentaddresses;
     }
 

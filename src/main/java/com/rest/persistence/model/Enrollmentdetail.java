@@ -1,5 +1,5 @@
 package com.rest.persistence.model;
-// Generated 25/03/2018 05:56:17 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2018 04:43:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -37,14 +37,14 @@ public class Enrollmentdetail  implements java.io.Serializable {
      private String userCreated;
      private Date dateCreated;
      private Byte status;
-     private Set enrollmentcourseclasses = new HashSet(0);
-     private Set enrollmentdetailschedules = new HashSet(0);
-     private Set grades = new HashSet(0);
+     private Set<Enrollmentcourseclass> enrollmentcourseclasses = new HashSet<Enrollmentcourseclass>(0);
+     private Set<Enrollmentdetailschedule> enrollmentdetailschedules = new HashSet<Enrollmentdetailschedule>(0);
+     private Set<Grade> grades = new HashSet<Grade>(0);
 
     public Enrollmentdetail() {
     }
 
-    public Enrollmentdetail(Course course, Enrollment enrollment, Professor professor, Date startDate, Date endDate, String userCreated, Date dateCreated, Byte status, Set enrollmentcourseclasses, Set enrollmentdetailschedules, Set grades) {
+    public Enrollmentdetail(Course course, Enrollment enrollment, Professor professor, Date startDate, Date endDate, String userCreated, Date dateCreated, Byte status, Set<Enrollmentcourseclass> enrollmentcourseclasses, Set<Enrollmentdetailschedule> enrollmentdetailschedules, Set<Grade> grades) {
        this.course = course;
        this.enrollment = enrollment;
        this.professor = professor;
@@ -151,29 +151,29 @@ public class Enrollmentdetail  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enrollmentdetail")
-    public Set getEnrollmentcourseclasses() {
+    public Set<Enrollmentcourseclass> getEnrollmentcourseclasses() {
         return this.enrollmentcourseclasses;
     }
     
-    public void setEnrollmentcourseclasses(Set enrollmentcourseclasses) {
+    public void setEnrollmentcourseclasses(Set<Enrollmentcourseclass> enrollmentcourseclasses) {
         this.enrollmentcourseclasses = enrollmentcourseclasses;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enrollmentdetail")
-    public Set getEnrollmentdetailschedules() {
+    public Set<Enrollmentdetailschedule> getEnrollmentdetailschedules() {
         return this.enrollmentdetailschedules;
     }
     
-    public void setEnrollmentdetailschedules(Set enrollmentdetailschedules) {
+    public void setEnrollmentdetailschedules(Set<Enrollmentdetailschedule> enrollmentdetailschedules) {
         this.enrollmentdetailschedules = enrollmentdetailschedules;
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="enrollmentdetail")
-    public Set getGrades() {
+    public Set<Grade> getGrades() {
         return this.grades;
     }
     
-    public void setGrades(Set grades) {
+    public void setGrades(Set<Grade> grades) {
         this.grades = grades;
     }
 

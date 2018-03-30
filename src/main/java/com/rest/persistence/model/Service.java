@@ -1,5 +1,5 @@
 package com.rest.persistence.model;
-// Generated 25/03/2018 05:56:17 PM by Hibernate Tools 4.3.1
+// Generated 30/03/2018 04:43:55 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -38,12 +38,12 @@ public class Service  implements java.io.Serializable {
      private String userCreated;
      private Date dateCreated;
      private Byte status;
-     private Set enrollments = new HashSet(0);
+     private Set<Enrollment> enrollments = new HashSet<Enrollment>(0);
 
     public Service() {
     }
 
-    public Service(String serviceName, String goal, Short customerType, Short modalityType, String components, Short serviceType, String contact, String description, String userCreated, Date dateCreated, Byte status, Set enrollments) {
+    public Service(String serviceName, String goal, Short customerType, Short modalityType, String components, Short serviceType, String contact, String description, String userCreated, Date dateCreated, Byte status, Set<Enrollment> enrollments) {
        this.serviceName = serviceName;
        this.goal = goal;
        this.customerType = customerType;
@@ -181,11 +181,11 @@ public class Service  implements java.io.Serializable {
     }
 
 @OneToMany(fetch=FetchType.LAZY, mappedBy="service")
-    public Set getEnrollments() {
+    public Set<Enrollment> getEnrollments() {
         return this.enrollments;
     }
     
-    public void setEnrollments(Set enrollments) {
+    public void setEnrollments(Set<Enrollment> enrollments) {
         this.enrollments = enrollments;
     }
 

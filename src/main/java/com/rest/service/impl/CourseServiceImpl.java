@@ -9,8 +9,11 @@ import com.rest.persistence.model.Course;
 import com.rest.persistence.repository.CourseRepository;
 import com.rest.service.CourseService;
 import com.rest.service.dto.CourseDTO;
+import com.rest.service.enums.CourseTypeEnum;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +37,13 @@ public class CourseServiceImpl implements CourseService{
         
         List<Course> courseList = courseRepository.findAll();
         List<CourseDTO> courseDTOList = new ArrayList<>();
-        for (Course course : courseList) {                   
+        for (Course course : courseList) {
+            CourseTypeEnum ct = null;
+            for (CourseTypeEnum en : CourseTypeEnum.values()) {
+                if(en.getValue() == course.getCourseType().intValue()){
+                    ct = en;
+                }
+            }            
             courseDTOList.add(
                 new CourseDTO(
                     course.getIdCourse(),
@@ -43,24 +52,19 @@ public class CourseServiceImpl implements CourseService{
                     course.getPrerequisite(),
                     course.getNumberOfHours(),
                     course.getCourseCode(),
-                ""));
+                    ct.toString()
+                )
+            );
         }        
         return courseDTOList;
         
-//        return courseRepository.findAll().stream().map(course -> 
-//                new CourseDTO(
-//                course.getIdCourse(),
-//                course.getCourseName(),
-//                course.getDescription(),
-//                course.getPrerequisite(),
-//                course.getNumberOfHours(),
-//                course.getCourseCode(),
-//                "")).collect(Collectors.toList());
     }
 
     @Override
     public void deleteCourse(Long idCourse) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Course course = new Course();
+        course.setIdCourse(idCourse);
+        courseRepository.delete(course);
     }
     
 }
