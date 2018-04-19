@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Bienvenido a la pagina de administrador</title>
+	</head>
+	<body>
+		<h1 th:inline="text">Hola [[${#httpServletRequest.remoteUser}]]</h1>
+		<form th:action="@{/logout}" method="post">
+			<h1>Usuarios del Sistema</h1>
+			<table>
+				<tr th:each= "usuario : ${usuarios}">
+					<td th:text="${usuario.user}">1</td>
+				</tr>
+			</table>
+                        <br />
+			<h1>Grupos del Sistema</h1>
+			<table>
+				<tr th:each= "grupo : ${grupos}">
+					<td th:text="${grupo.name}">1</td>
+				</tr>
+			</table>
+			<input type="submit" value="Cerrar Sesion"/>                        
+		</form>
+	</body>
+</html>
